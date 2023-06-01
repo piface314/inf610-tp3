@@ -6,7 +6,7 @@
 
 struct Item {
     int weight;
-    double value;
+    int value;
 
     friend std::ostream& operator<<(std::ostream& os, Item &i) {
         return os << '{' << i.weight << ',' << i.value << '}';

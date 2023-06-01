@@ -19,8 +19,7 @@ Instance Test::read(std::ifstream &f) {
     if (not f.is_open())
         return {0, std::vector<Item>()};
     std::vector<Item> items;
-    int n, w_max, w;
-    double v;
+    int n, w_max, w, v;
     if (f >> n >> w_max) {
         for (int i = 0; i < n; ++i) {
             f >> w >> v;
@@ -94,6 +93,10 @@ int Test::run_one(std::string &paradigm, std::string &fp_in) {
     auto fn = Test::fns.at(paradigm);
     std::ifstream f_in(fp_in);
     Instance instance = Test::read(f_in);
+    if (instance.w_max <= 0) {
+        std::cerr << "error: input file not found\n";
+        return 1;
+    }
     std::cout << "Paradigm: " << paradigm << "\n";
     std::cout << "W_max: " << instance.w_max << "\n";
     std::cout << "Items: ";
