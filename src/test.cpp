@@ -2,7 +2,7 @@
 
 size_t op = 0;
 
-std::map<std::string, int (*)(int, std::vector<Item>)> Test::fns = {
+std::map<std::string, int (*)(std::vector<Item>, int)> Test::fns = {
     {"bf",  bf::knapsack},
     {"xs",  xs::knapsack},
     {"bt",  bt::knapsack},
@@ -31,7 +31,7 @@ Instance Test::read(std::ifstream &f) {
     return {0, items};
 }
 
-void Test::run_paradigm(std::string &paradigm, int (*fn)(int, std::vector<Item>), std::string &fp_in, std::ofstream &f_out) {
+void Test::run_paradigm(std::string &paradigm, int (*fn)(std::vector<Item>, int), std::string &fp_in, std::ofstream &f_out) {
     Instance instance;
     int iter_count = 0;
     std::ifstream f_in(fp_in);
@@ -40,8 +40,8 @@ void Test::run_paradigm(std::string &paradigm, int (*fn)(int, std::vector<Item>)
     while ((instance = Test::read(f_in)).w_max > 0) {
         std::cout << "Instance #" << ++iter_count << "\n";
         Test::reset();
-        int answer = fn(instance.w_max, instance.items);
-        f_out << paradigm << ',' << instance.w_max << ',' << instance.items.size() << ','
+        int answer = fn(instance.items, instance.w_max);
+        f_out << paradigm << ',' << instance.items.size() << ',' << instance.w_max << ','
             << answer << ',' << op << '\n';
         f_out.flush();
     }
@@ -53,7 +53,7 @@ int Test::run_all(std::string &fp_in, std::string &fp_out) {
     std::ofstream f_out(fp_out);
     if (not f_out.is_open())
         return 1;
-    f_out << "paradigm,w_max,n_items,answer,op\n";
+    f_out << "paradigm,n_items,w_max,answer,op\n";
     try {
         for (auto it : Test::fns) {
             std::string paradigm = it.first;
@@ -99,7 +99,7 @@ int Test::run_one(std::string &paradigm, std::string &fp_in) {
     std::cout << "Items: ";
     PRINT_V(instance.items);
     Test::reset();
-    int answer = fn(instance.w_max, instance.items);
+    int answer = fn(instance.items, instance.w_max);
     std::cout << "Answer: " << answer << "\n";
     f_in.close();
     return 0;

@@ -1,9 +1,9 @@
 #include "dynamic-programming.hpp"
 
-int dpb::knapsack(int w_max, std::vector<Item> items) {
+int dpb::knapsack(std::vector<Item> items, int w_max) {
     return 0;
 }
 
-int dpt::knapsack(int w_max, std::vector<Item> items) {
+int dpt::knapsack(std::vector<Item> items, int w_max) {
     return 0;
 }

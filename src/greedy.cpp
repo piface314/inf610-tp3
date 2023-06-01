@@ -1,5 +1,5 @@
 #include "greedy.hpp"
 
-int gd::knapsack(int w_max, std::vector<Item> items) {
+int gd::knapsack(std::vector<Item> items, int w_max) {
     return 0;
 }

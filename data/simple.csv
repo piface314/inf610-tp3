@@ -1,7 +1,7 @@
-paradigm,w_max,n_items,answer,op
-bf,5,4,0,0
-bt,5,4,0,0
-dpb,5,4,0,0
-dpt,5,4,0,0
-gd,5,4,0,0
-xs,5,4,0,0
+paradigm,n_items,w_max,answer,op
+bf,4,5,0,0
+bt,4,5,0,0
+dpb,4,5,0,0
+dpt,4,5,0,0
+gd,4,5,0,0
+xs,4,5,0,0

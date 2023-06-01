@@ -8,7 +8,7 @@
 
 
 namespace xs {
-    int knapsack(int w_max, std::vector<Item> items);
+    int knapsack(std::vector<Item> items, int w_max);
 }
 
 #endif

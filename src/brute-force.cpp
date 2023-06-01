@@ -1,5 +1,5 @@
 #include "brute-force.hpp"
 
-int bf::knapsack(int w_max, std::vector<Item> items) {
+int bf::knapsack(std::vector<Item> items, int w_max) {
     return 0;
 }
