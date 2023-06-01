@@ -2,7 +2,7 @@
 
 size_t op = 0;
 
-std::map<std::string, int (*)(std::vector<Item>, int)> Test::fns = {
+std::map<std::string, int (*)(std::vector<Item>&, int)> Test::fns = {
     {"bf",  bf::knapsack},
     {"xs",  xs::knapsack},
     {"bt",  bt::knapsack},
@@ -30,7 +30,7 @@ Instance Test::read(std::ifstream &f) {
     return {0, items};
 }
 
-void Test::run_paradigm(std::string &paradigm, int (*fn)(std::vector<Item>, int), std::string &fp_in, std::ofstream &f_out) {
+void Test::run_paradigm(std::string &paradigm, int (*fn)(std::vector<Item>&, int), std::string &fp_in, std::ofstream &f_out) {
     Instance instance;
     int iter_count = 0;
     std::ifstream f_in(fp_in);

@@ -24,9 +24,9 @@ struct Instance {
 
 class Test {
 private:
-    static std::map<std::string, int (*)(std::vector<Item>, int)> fns;
+    static std::map<std::string, int (*)(std::vector<Item>&, int)> fns;
     static Instance read(std::ifstream &f);
-    static void run_paradigm(std::string &paradigm, int (*)(std::vector<Item>, int), std::string &fp_in, std::ofstream &f_out);
+    static void run_paradigm(std::string &paradigm, int (*)(std::vector<Item>&, int), std::string &fp_in, std::ofstream &f_out);
 public:
     static void reset();
     static int run_all(std::string &fp_in, std::string &fp_out);

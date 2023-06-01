@@ -1,6 +1,6 @@
 #include "exhaustive-search.hpp"
 
-int xs::knapsack(std::vector<Item> items, int w_max) {
+int xs::knapsack(std::vector<Item> &items, int w_max) {
     int best = 0;
     for (auto set : xs::power_set(items)) {
         int w = 0, v = 0;
