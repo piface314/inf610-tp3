@@ -1,7 +1,6 @@
 #ifndef BACKTRACK_H
 #define BACKTRACK_H
 
-#include <algorithm>
 #include <vector>
 #include "data.hpp"
 #include "test-counter.hpp"

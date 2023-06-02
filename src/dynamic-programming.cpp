@@ -24,7 +24,7 @@ op+=2;          v[i][j] = std::max(v[i-1][j], v[i-1][j-it.weight] + it.value);
 
 int dpt::knapsack(std::vector<Item> &items, int w) {
     int v[(items.size()+1)*(w+1)];
-    for (int i = 0; i < (items.size()+1)*(w+1); ++i)
+    for (int i = 0; i < ((int)items.size()+1)*(w+1); ++i)
         v[i] = -1;
     return knapsack(v, w+1, items, items.size(), w);
 }
