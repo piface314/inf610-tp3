@@ -8,11 +8,12 @@
 
 
 namespace dpb {
-    int knapsack(std::vector<Item> &items, int w_max);
+    int knapsack(std::vector<Item> &items, int w);
 }
 
 namespace dpt {
-    int knapsack(std::vector<Item> &items, int w_max);
+    int knapsack(std::vector<Item> &items, int w);
+    int knapsack(int *v, int w_max, std::vector<Item> &items, int n, int w);
 }
 
 #endif
