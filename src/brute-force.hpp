@@ -8,8 +8,8 @@
 
 
 namespace bf {
-    int knapsack(std::vector<Item> &items, int w_max);
-    int knapsack(int n, std::vector<Item> &items, int w_max);
+    int knapsack(std::vector<Item> &items, int w);
+    int knapsack(std::vector<Item> &items, int n, int w);
 }
 
 #endif

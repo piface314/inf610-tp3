@@ -1,19 +1,19 @@
 #include "brute-force.hpp"
 
-int bf::knapsack(std::vector<Item> &items, int w_max) {
-    return knapsack((int)items.size(), items, w_max);
+int bf::knapsack(std::vector<Item> &items, int w) {
+    return knapsack(items, (int)items.size(), w);
 }
 
-int bf::knapsack(int n, std::vector<Item> &items, int w_max) {
+int bf::knapsack(std::vector<Item> &items, int n, int w) {
     if (n == 0)
         return 0;
     Item it = items[n-1];
     ++op;
-    if (it.weight > w_max)
-        return knapsack(n-1, items, w_max);
+    if (it.weight > w)
+        return knapsack(items, n-1, w);
     op += 2;
     return std::max(
-        knapsack(n-1, items, w_max),
-        knapsack(n-1, items, w_max - it.weight) + it.value
+        knapsack(items, n-1, w),
+        knapsack(items, n-1, w - it.weight) + it.value
     );
 }

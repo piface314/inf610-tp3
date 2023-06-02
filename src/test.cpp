@@ -104,6 +104,7 @@ int Test::run_one(std::string &paradigm, std::string &fp_in) {
     Test::reset();
     int answer = fn(instance.items, instance.w_max);
     std::cout << "Answer: " << answer << "\n";
+    std::cout << "Operations: " << op << "\n";
     f_in.close();
     return 0;
 }
