@@ -72,7 +72,7 @@ int Test::run_multi(std::string &paradigm, std::string &fp_in, std::string &fp_o
     std::ofstream f_out(fp_out);
     if (not f_out.is_open())
         return 1;
-    f_out << "paradigm,w_max,n_items,answer,op\n";
+    f_out << "paradigm,n_items,w_max,answer,op\n";
     try {
         auto fn = Test::fns.at(paradigm);
         Test::run_paradigm(paradigm, fn, fp_in, f_out);

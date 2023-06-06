@@ -10,8 +10,7 @@ int gd::knapsack(std::vector<Item> &items, int w_max) {
     for (Item it : its) {
 ++op;   if (w + it.weight <= w_max) {
 ++op;       w += it.weight, v += it.value;
-        } else
-            break;
+        }
     }
     return v;
 }

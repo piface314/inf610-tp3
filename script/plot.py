@@ -106,6 +106,7 @@ def plot_gd(df: pd.DataFrame, out_fp: str):
     for p, color in zip(ps, colors):
         df_p = df[df.paradigm == p]
         df_p = df_p.groupby("n_items")["op"].agg(["min", "median", "max"])
+        print(df_p)
         x = df_p.index
         yerr = (df_p["max"] - df_p["min"]) / 2
         y = df_p["min"] + yerr
