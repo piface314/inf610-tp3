@@ -3,7 +3,7 @@ from sys import argv
 
 
 def generate_one(n: int, w: int):
-    return ' '.join(f"{randint(1, w)} {randint(1, 100)}" for _ in range(n))
+    return ' '.join(f"{randint(1, w//2)} {randint(1, 100)}" for _ in range(n))
 
 if __name__ == "__main__":
     if len(argv) <= 7:
