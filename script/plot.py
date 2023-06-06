@@ -42,11 +42,13 @@ def plot_bf_group(df: pd.DataFrame, out_fp: str):
         df_p = df[df.paradigm == p]
         df_p = df_p.groupby("n_items")["op"].agg(["min", "median", "max"])
         x = df_p.index
-        yerr = (df_p["max"] - df_p["min"]) / 2
-        y = df_p["min"] + yerr
+        yerr = df_p[["max", "min"]].copy()
+        yerr["max"] -= df_p["median"]
+        yerr["min"] -= df_p["median"]
+        y = df_p["median"]
         x_ref = np.linspace(x.min(), x.max(), x.max() - x.min())
         plt.plot(x_ref, bounds[p](x_ref, 0), color=color, label=functions[p], linestyle='--')
-        plt.errorbar(x, y, yerr=yerr, label=labels[p], color=color, marker="o")
+        plt.errorbar(x, y, yerr=(np.abs(yerr["min"]), yerr["max"]), label=labels[p], color=color, marker="o")
     plt.xticks(x)
     plt.ylim(bottom=0)
     plt.yscale("symlog")
@@ -69,7 +71,7 @@ def plot_dp_group(df: pd.DataFrame, out_fp: str):
         y = df_["op"]
         plt.plot(x, y, color=color, label=f"$T_{{dpb}}(n,{w})$ medido", marker="o")
     x_ref = np.linspace(x.min(), x.max(), x.max() - x.min())
-    plt.plot(x_ref, bounds["dpb"](x_ref, w), color=color, label=f"$3nw, w={x.max()}$", linestyle='--')
+    plt.plot(x_ref, bounds["dpb"](x_ref, w), color=color, label=f"$3nW, W={x.max()}$", linestyle='--')
     plt.xticks(x)
     plt.xlabel("Qt. de itens ($n$)")
     plt.ylabel("Qt. de operações")
@@ -89,7 +91,7 @@ def plot_dp_group(df: pd.DataFrame, out_fp: str):
         y = df_["op"]
         plt.plot(x, y, color=color, label=f"$T_{{dpt}}(n,{w})$ medido", marker="o")
     x_ref = np.linspace(x.min(), x.max(), x.max() - x.min())
-    plt.plot(x_ref, bounds["dpt"](x_ref, w), color=color, label=f"$3nw, w={x.max()}$", linestyle='--')
+    plt.plot(x_ref, bounds["dpt"](x_ref, w), color=color, label=f"$3nW, W={x.max()}$", linestyle='--')
     plt.xticks(x)
     plt.xlabel("Qt. de itens ($n$)")
     plt.ylabel("Qt. de operações")
@@ -106,13 +108,14 @@ def plot_gd(df: pd.DataFrame, out_fp: str):
     for p, color in zip(ps, colors):
         df_p = df[df.paradigm == p]
         df_p = df_p.groupby("n_items")["op"].agg(["min", "median", "max"])
-        print(df_p)
         x = df_p.index
-        yerr = (df_p["max"] - df_p["min"]) / 2
-        y = df_p["min"] + yerr
+        yerr = df_p[["max", "min"]].copy()
+        yerr["max"] -= df_p["median"]
+        yerr["min"] -= df_p["median"]
+        y = df_p["median"]
         x_ref = np.linspace(x.min(), x.max(), x.max() - x.min())
         plt.plot(x_ref, bounds[p](x_ref, 0), color=color, label=functions[p], linestyle='--')
-        plt.errorbar(x, y, yerr=yerr, label=labels[p], color=color, marker="o")
+        plt.errorbar(x, y, yerr=(np.abs(yerr["min"]), yerr["max"]), label=labels[p], color=color, marker="o")
     plt.xticks(x)
     plt.xlabel("Qt. de itens ($n$)")
     plt.ylabel("Qt. de operações")
