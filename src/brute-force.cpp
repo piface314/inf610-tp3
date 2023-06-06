@@ -5,7 +5,7 @@ int bf::knapsack(std::vector<Item> &items, int w) {
 }
 
 int bf::knapsack(std::vector<Item> &items, int n, int w) {
-    if (n == 0)
+    if (n == 0 || w == 0)
         return 0;
     Item it = items[n-1];
     ++op;
