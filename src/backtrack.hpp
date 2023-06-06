@@ -9,7 +9,7 @@
 
 namespace bt {
     int knapsack(std::vector<Item> &items, int w);
-    int knapsack(std::vector<Item> &items, int i, int w, int v_max, int &v_best);
+    int knapsack(std::vector<Item> &items, int i, int w, int v_acc, int v_max, int &v_best);
 }
 
 #endif
